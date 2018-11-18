@@ -1,6 +1,5 @@
-/**---------------------------------------------------------------------------
- * Change quantity selector into dropdown
- ----------------------------------------------------------------------------*/
+<?php
+//WC change qty input to dropdown
 function woocommerce_quantity_input($data = null) {
  global $product;
   if (!$data) {
@@ -19,7 +18,7 @@ function woocommerce_quantity_input($data = null) {
       'max_value'     => apply_filters( 'woocommerce_quantity_input_max', '', $product ),
       'min_value'     => apply_filters( 'woocommerce_quantity_input_min', '', $product ),
       'step'          => apply_filters( 'woocommerce_quantity_input_step', '1', $product ),
-      'style'         => apply_filters( 'woocommerce_quantity_style', 'float:left;', $product )
+      'style'         => apply_filters( 'woocommerce_quantity_style', 'float:left;margin-right:5px;', $product )
     );
   }
   
@@ -28,7 +27,7 @@ function woocommerce_quantity_input($data = null) {
   else $min = 1;
   if ( ! empty( $defaults['max_value'] ) )
     $max = $defaults['max_value'];
-  else $max = 100;
+  else $max = 50;
   if ( ! empty( $defaults['step'] ) )
     $step = $defaults['step'];
   else $step = 1;
@@ -45,5 +44,5 @@ function woocommerce_quantity_input($data = null) {
     $options .= '<option value="' . $count . '"'.$selected.'>' . $count . '</option>';
   }
   
-  echo '<div class="quantity_select" style="' . $defaults['style'] . '"><select name="' . $name . '" title="' . _x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ) . '" class="qty">' . $options . '</select></div>';
+  echo '<div class="quantity_select" style="' . $defaults['style'] . '"><select name="' . $name . '" title="' . _x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ) . '" class="qty form-control">' . $options . '  </select></div>';
 }
